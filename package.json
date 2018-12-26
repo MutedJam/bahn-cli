@@ -1,0 +1,20 @@
+{
+  "name": "bahn-cli",
+  "version": "1.0.0",
+  "description": "Command line access to DB timetable information",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "bahn": "bin/bahn-cli"
+  },
+  "author": "MutedJam",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "db-hafas": "^3.0.1",
+    "minimist": "^1.2.0",
+    "moment": "^2.23.0"
+  }
+}
