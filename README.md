@@ -1,6 +1,8 @@
 # bahn-cli
 A simple command line application to retrieve German and European railway connections powered by [db-hafas](https://github.com/derhuerst/db-hafas).
 
+![Screenshot](/images/screenshot.png)
+
 ## Installation
 ```
 # Clone the repo into a new folder
