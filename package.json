@@ -10,7 +10,7 @@
     "bahn": "bin/bahn-cli"
   },
   "author": "MutedJam",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
     "db-hafas": "^3.0.1",
