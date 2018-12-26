@@ -35,5 +35,5 @@ Example:
 
 ```
 # Search for a connection from Stralsund to Zürich HB at 08:00 on January 3 2019
-bahn -f Stralsung -t "Zürich HB" -d 2019-01-01T08:00
+bahn -f Stralsung -t "Zürich HB" -d 2019-01-03T08:00
 ```
