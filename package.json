@@ -18,7 +18,7 @@
     "moment": "^2.23.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/MutedJam/bahn-cli.git"
-  }  
+    "type": "git",
+    "url": "https://github.com/MutedJam/bahn-cli.git"
+  }
 }

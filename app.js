@@ -1,6 +1,6 @@
-const createHafas = require('db-hafas')
-const moment = require('moment')
-const minimist = require('minimist')
+const createHafas = require('db-hafas');
+const moment = require('moment');
+const minimist = require('minimist');
 const chalk = require('chalk');
 
 module.exports = () => {
@@ -10,8 +10,8 @@ module.exports = () => {
       t: 'to',
       d: 'departure'
     }
-  })
-  const hafas = createHafas('bahn-cli 1.0.0')
+  });
+  const hafas = createHafas('bahn-cli 1.0.0');
 
   hafas
     .locations(args.from || 'Bernau(b Berlin)', {
@@ -28,7 +28,7 @@ module.exports = () => {
     .then(from => {
       // console.log(from.name + ': ' + from.id);
       hafas
-        .locations(args.to || 'Berlin Schönhauser Allee', {
+        .locations(args.to || 'Berlin Hbf', {
           results: 1
         })
         .then(toResults => {
@@ -72,10 +72,10 @@ module.exports = () => {
               } else {
                 console.log('No route found')
               }
-            })
-        })
-    })
-}
+            });
+        });
+    });
+};
 
 getPlatformString = platformValue => {
   if (platformValue) {
@@ -83,7 +83,7 @@ getPlatformString = platformValue => {
   } else {
     return ''
   }
-}
+};
 
 getDelayString = delayValue => {
   if (delayValue && delayValue >= 60) {
@@ -91,7 +91,7 @@ getDelayString = delayValue => {
   } else {
     return ''
   }
-}
+};
 
 getTimeString = timestamp => {
   if (moment().isSame(timestamp, 'day')) {
@@ -99,39 +99,43 @@ getTimeString = timestamp => {
   } else {
     return moment(timestamp).format('YYYY-MM-DD HH:mm')
   }
-}
+};
 
 getLineString = line => {
   if (line && line.name) {
-    return coloriseLineString(line.product, line.name);
+    if (line.name == 'Schiff') {
+      return coloriseLineString(line.product, 'Ferry');
+    } else {
+      return coloriseLineString(line.product, line.name);
+    }
   } else if (line && line.operator && line.operator.name) {
     return coloriseLineString(line.product, line.operator.name)
   } else {
     return ''
   }
-}
+};
 
 coloriseLineString = (product, name) => {
   if (product && ['regional', 'regionalExp'].includes(product)) {
-    return chalk.bgRgb(240, 20, 20).whiteBright(name)
+    return chalk.bgRgb(240, 20, 20).whiteBright(name);
   } else if (product && ['suburban'].includes(product)) {
-    return chalk.bgRgb(4, 121, 57).whiteBright(name)
+    return chalk.bgRgb(4, 121, 57).whiteBright(name);
   } else if (product && ['subway'].includes(product)) {
-    return chalk.bgHex('#0664ab').whiteBright(name)
+    return chalk.bgHex('#0664ab').whiteBright(name);
   } else if (product && ['tram'].includes(product)) {
-    return chalk.bgHex('#c00').whiteBright(name)
+    return chalk.bgHex('#c00').whiteBright(name);
   } else if (product && ['bus'].includes(product)) {
-    return chalk.bgHex('#993399').whiteBright(name)
+    return chalk.bgHex('#993399').whiteBright(name);
   } else if (product && ['national', 'nationalExp'].includes(product)) {
-    return chalk.bgWhiteBright.rgb(240, 20, 20)(name)
+    return chalk.bgWhiteBright.rgb(240, 20, 20)(name);
   } else if (product && ['ferry'].includes(product)) {
-    return chalk.bgHex('#0080c0').whiteBright(name)
+    return chalk.bgHex('#0080c0').whiteBright(name);
   } else {
     console.log('No colour found for product ' + product);
-    return chalk.inverse(name)
+    return chalk.inverse(name);
   }
-}
+};
 
 String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
-}
+};
