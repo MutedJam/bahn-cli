@@ -14,7 +14,7 @@ module.exports = () => {
   const hafas = createHafas('bahn-cli 1.0.0');
 
   hafas
-    .locations(args.from || 'Bernau(b Berlin)', {
+    .locations(args.from || getDefaultFrom(), {
       results: 1
     })
     .then(fromResults => {
@@ -28,7 +28,7 @@ module.exports = () => {
     .then(from => {
       // console.log(from.name + ': ' + from.id);
       hafas
-        .locations(args.to || 'Berlin Hbf', {
+        .locations(args.to || getDefaultTo(), {
           results: 1
         })
         .then(toResults => {
@@ -76,6 +76,22 @@ module.exports = () => {
         });
     });
 };
+
+getDefaultFrom = () => {
+  if ((new Date).getHours() <= 11) {
+    return 'Bernau(b Berlin)';
+  } else {
+    return 'Berlin Hbf';
+  }
+}
+
+getDefaultTo = () => {
+  if ((new Date).getHours() <= 11) {
+    return 'Berlin Hbf';
+  } else {
+    return 'Bernau(b Berlin)';
+  }
+}
 
 getPlatformString = platformValue => {
   if (platformValue) {
