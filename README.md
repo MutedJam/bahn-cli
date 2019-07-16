@@ -34,6 +34,6 @@ The tool accepts the following arguments:
 Example:
 
 ```
-# Search for a connection from Stralsund to Zürich HB at 08:00 on January 3 2019
-bahn -f Stralsung -t "Zürich HB" -d 2019-01-03T08:00
+# Search for a connection from Stralsund to Zürich HB at 10:00 on July 17 2019
+bahn -f Stralsund -t "Zürich HB" -d 2019-07-17T10:00
 ```
